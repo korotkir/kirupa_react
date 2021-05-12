@@ -1,0 +1,37 @@
+<! DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Компоненты React</title>
+  <script src="https://unpkg.com/react@16/umd/react.
+development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.
+development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/
+babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+
+  class HelloWorld extends React.Component {
+    render() {
+      return <p>Привет, {this.props.greetTarget}!</p>
+    }
+  }
+
+  ReactDOM.render(
+          <div>
+            <HelloWorld greetTarget='Иван'/>
+            <HelloWorld greetTarget='Петр'/>
+            <HelloWorld greetTarget='Василий'/>
+            <HelloWorld greetTarget='Олег'/>
+            <HelloWorld greetTarget='Дмитрий'/>
+            <HelloWorld greetTarget='Сергей'/>
+          </div>,
+          document.querySelector('#container')
+  )
+
+</script>
+</body>
+</html>

@@ -7,19 +7,23 @@ import {
 import Home from "./Home"
 import Stuff from "./Stuff"
 import Contact from "./Contact"
+import './index.css'
 
 class Main extends Component {
     render() {
         return (
             <HashRouter>
                 <div>
-                    <h1>Simple SPA</h1>
+                    <h1>Hello Carlos!</h1>
                     <ul className="header">
-                        <li><NavLink to="/stuff">Main</NavLink></li>
+                        <li><NavLink exact to="/">Main</NavLink></li>
                         <li><NavLink to="/stuff">Products</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
                     </ul>
                     <div className="content">
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/stuff" component={Stuff}/>
+                        <Route path="/contact" component={Contact}/>
                     </div>
                 </div>
             </HashRouter>

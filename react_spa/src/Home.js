@@ -5,7 +5,7 @@ class Home extends Component {
         return (
             <div>
                 <h2>HELLO</h2>
-                <p>Cras facilisis urna ornare ex volutpat, et
+                <p>How your mom? Cras facilisis urna ornare ex volutpat, et
                     convallis erat elementum. Ut aliquam, ipsum vitae
                     gravida suscipit, metus dui bibendum est, eget
                     rhoncus nibh metus nec massa. Maecenas hendrerit

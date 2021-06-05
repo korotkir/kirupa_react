@@ -7,13 +7,13 @@ class Stuff extends Component {
                 <h2>Products</h2>
                 <p>Mauris sem velit, vehicula eget sodales vitae,
                     rhoncus eget sapien:</p>
-                <ol>
+                <ul>
                     <li>Nulla pulvinar diam</li>
                     <li>Facilisis bibendum</li>
                     <li>Vestibulum vulputate</li>
                     <li>Eget erat</li>
                     <li>Id porttitor</li>
-                </ol>
+                </ul>
             </div>
         );
     }

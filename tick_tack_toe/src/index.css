@@ -1,6 +1,11 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
+    height: 100vh;
+    background-color: #81d4fa;
+}
+
+#container {
+    height: 100vh;
 }
 
 ol, ul {
@@ -13,23 +18,18 @@ ol, ul {
     display: table;
 }
 
-.status {
-    margin-bottom: 10px;
-}
-
 .square {
-    background: #fff;
+    background: #b3e5fc;
     border: 1px solid #999;
     float: left;
     font-size: 24px;
     font-weight: bold;
     line-height: 34px;
-    height: 34px;
+    height: 136px;
     margin-right: -1px;
     margin-top: -1px;
-    padding: 0;
     text-align: center;
-    width: 34px;
+    width: 136px;
 }
 
 .square:focus {
@@ -40,11 +40,60 @@ ol, ul {
     background: #ddd;
 }
 
+.main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-basis: 0;
+}
+
+.left {
+    display: flex;
+    width: calc(100%/3);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/3);
+}
+
+.game-info {
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100%/3);
+    align-items: start;
+}
+
 .game {
     display: flex;
     flex-direction: row;
 }
 
-.game-info {
-    margin-left: 20px;
+.clear {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
+
+.status {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.jumpTo {
+    border: none;
+    background: none;
+}
+
+.jumpTo:hover {
+    text-decoration: underline;
+    color: #0066FF;
+}
+
+
+

@@ -14,6 +14,9 @@ import React from 'react'
 // }
 
 // Функциональный компонент
+// Возвращает 3 свойства, className - класс для css,
+// onClick - событие при клике на квадрат, value - значение внутри кнопки ('X' или 'O')
+// Пропсы описаны в Game
 function Square(props) {
     return (
         <button className="square" onClick={props.onClick}>

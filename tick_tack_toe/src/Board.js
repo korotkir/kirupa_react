@@ -2,6 +2,7 @@ import React from 'react'
 import Square from './Square'
 
 class Board extends React.Component {
+    // Данный метод вызывает квадрат :)
     renderSquare(i) {
         return <Square
             value={this.props.squares[i]}

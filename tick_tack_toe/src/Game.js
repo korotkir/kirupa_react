@@ -1,25 +1,33 @@
 import React from 'react'
 import Board from './Board'
-import calculateWinner from './utils'
+import {calculateWinner, stepListener} from './utils'
 
 class Game extends React.Component {
     constructor(props) {
         super(props)
 
+        // Задаем состояние.
+        // В history хранится массив объектов с состояниями каждого шага игры (9 квадратов заполненных null)
         this.state = {
             history: [{
-                squares: Array(9).fill(null)
+                squares: Array(9).fill(null),
             }],
-            stepNumber: 0,
-            xIsNext: true,
+            stepNumber: 0, // Шаг игры
+            xIsNext: true, // Для определения 'X' или 'O'
         }
     }
 
+    // Обработчик клика
     handleClick(i) {
+        // Берет полный массив с последним состоянием
         const history = this.state.history.slice(0, this.state.stepNumber + 1)
+        // Выбор шага на который нужно вернутся
         const current = history[history.length - 1]
+        // Актуальное состояние игры
         const squares = current.squares.slice()
+        // если победа - окончить выполнение кода
         if (calculateWinner(squares) || squares[i]) {
+
             return
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O'
@@ -35,46 +43,61 @@ class Game extends React.Component {
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            xIsNext: (step % 2) === 0
+            xIsNext: (step % 2) === 0,
         })
     }
 
     render() {
         const history = this.state.history
         const current = history[this.state.stepNumber]
+
         const winner = calculateWinner(current.squares)
 
         const moves = history.map((step, move) => {
+
             const desc = move ?
-                'Перейти к ходу #' + move :
-                'К началу игры';
+                `Ход №${move}.` :
+                'Начало игры. Первый ход.'
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button className="jumpTo" onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
-            );
-        });
+            )
+        })
+
+        //console.log(Object.values(history.forEach(() => )))
 
         let status
         if (winner) {
-            status = 'Выиграл ' + winner;
+            status = `Выиграл ${winner}!`;
+            document.querySelector('.status').style.color = 'red'
         } else {
             status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
         }
 
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        onClick={(i) => this.handleClick(i)}
-                    />
+            <div className="main">
+                <div className="left">
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
+                <div className="center">
+                    <div className="game">
+                        <div className="game-board">
+                            <div className="clear">Очистить поле!</div>
+                            <Board
+                                squares={current.squares}
+                                onClick={(i) => this.handleClick(i)}
+                            />
+                            <div className="status">{status}</div>
+                        </div>
+                    </div>
                 </div>
+                    <div className="game-info">
+                        <ol>{moves}</ol>
+                    </div>
             </div>
+
+
+
         );
     }
 }

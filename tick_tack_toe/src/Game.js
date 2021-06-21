@@ -36,6 +36,7 @@ class Game extends React.Component {
                 squares: squares,
             }]),
             stepNumber: history.length,
+            // При нажатии на кнопку чередует X и O ()
             xIsNext: !this.state.xIsNext,
         })
     }
@@ -53,11 +54,26 @@ class Game extends React.Component {
 
         const winner = calculateWinner(current.squares)
 
-        const moves = history.map((step, move) => {
+
+        const moves = history.map((step, move, arr) => {
+
+            let turn = move % 2 ? 'X' : 'O'
+            git
+            console.log('arr', arr)
+            console.log('step', Object.values(step)[0])
+            console.log('move', move)
+            console.log('history', history)
 
             const desc = move ?
-                `Ход №${move}.` :
+                `Ход №${move}. ${turn}. ${move
+                    ? stepListener(Object.values(arr[arr.length - 2])[0], Object.values(step)[0])
+                    : ''} ` :
                 'Начало игры. Первый ход.'
+
+            // let desc = `Ход №${move}. ${turn}. ${move
+            //         ? stepListener(Object.values(arr[arr.length - 2])[0], Object.values(step)[0])
+            //         : ''} `
+
             return (
                 <li key={move}>
                     <button className="jumpTo" onClick={() => this.jumpTo(move)}>{desc}</button>

@@ -38,7 +38,9 @@ export function stepListener(penultArr, lastArr) {
         'Row: 3; Col: 1;', 'Row: 3; Col: 2;', 'Row: 3; Col: 3;',
     ]
 
-    return stepNow[result]
+    const error = 'stepListener error!'
+
+    return stepNow[result] || error
 }
 
 // Example

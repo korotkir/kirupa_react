@@ -25,6 +25,7 @@ class Game extends React.Component {
         const current = history[history.length - 1]
         // Актуальное состояние игры
         const squares = current.squares.slice()
+        console.log('history', history)
         // если победа - окончить выполнение кода
         if (calculateWinner(squares) || squares[i]) {
 
@@ -58,15 +59,25 @@ class Game extends React.Component {
         const moves = history.map((step, move, arr) => {
 
             let turn = move % 2 ? 'X' : 'O'
-            git
-            console.log('arr', arr)
-            console.log('step', Object.values(step)[0])
-            console.log('move', move)
-            console.log('history', history)
 
+            // step = Текущий обрабатываемый элемент массива.
+            // move = Индекс текущего обрабатываемого элемента в массиве.
+            // arr = Массив, по которому осуществляется проход.
+
+            console.log('move', move)
+
+            let listener = move
+                ? stepListener(Object.values(history[history.length - ++move])[0], Object.values(history[history.length - --move])[0])
+                : 'test'
+
+
+            // console.log('move', move)
+            console.log('3', Object.values(arr))
+            // console.log('Предпоследний массив объекта: ', move ? Object.values(arr[move - 1])[0] : 'err')
+            // console.log('Последний массив объекта: ', move ? Object.values(step)[0] : 'err')
             const desc = move ?
-                `Ход №${move}. ${turn}. ${move
-                    ? stepListener(Object.values(arr[arr.length - 2])[0], Object.values(step)[0])
+                `Ход №${move}. ${turn}. ${arr.length >= 2
+                    ? `Ход №${move}. ${turn}. ${listener} `
                     : ''} ` :
                 'Начало игры. Первый ход.'
 

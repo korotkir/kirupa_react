@@ -64,35 +64,29 @@ class Game extends React.Component {
             // move = Индекс текущего обрабатываемого элемента в массиве.
             // arr = Массив, по которому осуществляется проход.
 
-            console.log('move', move)
+            // let listener = move
+            //     ? stepListener(Object.values(arr[arr.length - ++move])[0], Object.values(arr[arr.length - --move])[0])
+            //     : 'stepListener is not working properly!'
 
-            let listener = move
-                ? stepListener(Object.values(history[history.length - ++move])[0], Object.values(history[history.length - --move])[0])
-                : 'test'
-
-
-            // console.log('move', move)
-            console.log('3', Object.values(arr))
-            // console.log('Предпоследний массив объекта: ', move ? Object.values(arr[move - 1])[0] : 'err')
-            // console.log('Последний массив объекта: ', move ? Object.values(step)[0] : 'err')
-            const desc = move ?
-                `Ход №${move}. ${turn}. ${arr.length >= 2
-                    ? `Ход №${move}. ${turn}. ${listener} `
-                    : ''} ` :
-                'Начало игры. Первый ход.'
-
-            // let desc = `Ход №${move}. ${turn}. ${move
-            //         ? stepListener(Object.values(arr[arr.length - 2])[0], Object.values(step)[0])
-            //         : ''} `
-
+            const desc = move
+                ? `Ход №${move}. Очередь ${turn}.`
+                : 'Начало игры. Первый ход.'
             return (
                 <li key={move}>
                     <button className="jumpTo" onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
+
+            // const desc = move ?
+            //     `Ход №${move}. ${turn} . ${arr.length >= 2
+            //         ? `Ход №${move}. ${turn}. ${listener}`
+            //         : ''} ` :
+            //     'Начало игры. Первый ход.'
+            // return (
+            //     <li key={move}>
+            //         <button className="jumpTo" onClick={() => this.jumpTo(move)}>{desc}</button>
+            //     </li>
             )
         })
-
-        //console.log(Object.values(history.forEach(() => )))
 
         let status
         if (winner) {
@@ -109,7 +103,6 @@ class Game extends React.Component {
                 <div className="center">
                     <div className="game">
                         <div className="game-board">
-                            <div className="clear">Очистить поле!</div>
                             <Board
                                 squares={current.squares}
                                 onClick={(i) => this.handleClick(i)}

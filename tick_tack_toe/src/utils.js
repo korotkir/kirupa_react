@@ -42,8 +42,3 @@ export function stepListener(penultArr, lastArr) {
 
     return stepNow[result] || error
 }
-
-// Example
-// history.length >= 2
-//     ? stepListener(Object.values(history[history.length - 2])[0], Object.values(history[history.length - 1])[0])
-//     : 'test'
